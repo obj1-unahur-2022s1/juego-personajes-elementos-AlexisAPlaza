@@ -1,0 +1,36 @@
+import jugadoresPersonajes.*
+test "MarioRecolecta45 MarioFeliz CastilloDefensa170" {
+	luisa.asignarPersonaje(mario)
+	luisa.aparecer(aurora)
+	luisa.aparecer(castillo)
+	assert.equals(45,mario.verValorRecolectado())
+	assert.equals(true,mario.esFeliz())
+	assert.equals(170,castillo.verDefensa())
+}
+
+test "MarioRecolecta16 AlturaTipa MarioNoFeliz AuroraEstaMuerta CastilloDefensa150 JabalinaNoCargada"{
+	floki.arma(jabalina)
+	luisa.asignarPersonaje(mario)
+	luisa.aparecer(tipa)
+	luisa.asignarPersonaje(floki)
+	luisa.aparecer(aurora)
+	luisa.aparecer(castillo)
+	assert.equals(16,mario.verValorRecolectado())
+	assert.equals(9,tipa.altura())
+	assert.equals(false,mario.esFeliz())
+	assert.equals(false,aurora.estaViva())
+	assert.equals(150,castillo.verDefensa())
+	assert.equals(false,jabalina.estaCargada())
+}
+
+test "MarioRecolecta0 AuroraVive CastilloDefensa146 BallestaCargada Ballesta8Flechas"{
+	floki.arma(ballesta)
+	luisa.asignarPersonaje(floki)
+	luisa.aparecer(aurora)
+	luisa.aparecer(castillo)
+	assert.equals(0,mario.verValorRecolectado())
+	assert.equals(true,aurora.estaViva())
+	assert.equals(146,castillo.verDefensa())
+	assert.equals(true,ballesta.estaCargada())
+	assert.equals(8,ballesta.verFlechas())
+}
